@@ -77,7 +77,7 @@ namespace Maths
 
 			//UTILS
 			inline float* ToFloat3();
-			inline void Normalise();
+			inline void Normalize();
 			inline float GetMagnitude();
 			inline Vector3 crossProduct(const Vector3& v, const Vector3& f);
 			inline float dotProduct(const Vector3& v);
@@ -116,6 +116,16 @@ namespace Maths
 			inline Vector3 operator -= (const float& f);
 			inline Vector3 operator *= (const float& f);
 			inline Vector3 operator /= (const float& f);
+
+
+			//------------------------------------------------
+
+
+			inline static Vector3 Normalize(const Vector3& v);
+
+
+			//------------------------------------------------
+
 		};
 
 		class Vector4

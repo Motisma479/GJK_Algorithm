@@ -127,7 +127,7 @@ inline float* Maths::sVector::Vector3::ToFloat3()
 {
 	return &x;
 }
-inline void Maths::sVector::Vector3::Normalise()
+inline void Maths::sVector::Vector3::Normalize()
 {
 	x /= GetMagnitude();
 	y /= GetMagnitude();
@@ -145,7 +145,6 @@ inline float Maths::sVector::Vector3::dotProduct(const Vector3& v)
 {
 	return x * v.x + y * v.y + z * v.z;
 }
-
 //EQUALITY OPERATOR
 inline bool Maths::sVector::Vector3::operator == (const Vector3& v)
 {
@@ -155,7 +154,6 @@ inline bool Maths::sVector::Vector3::operator != (const Vector3& v)
 {
 	return (x != v.x) || (y != v.y) || (z != v.z);
 }
-
 //ASSINGMENT OPERATOR
 inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator = (const Vector3& v)
 {
@@ -171,7 +169,6 @@ inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator = (const float&
 	z = f;
 	return *this;
 }
-
 //NEGATE OPERATOR
 inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator - (void)
 {
@@ -180,7 +177,6 @@ inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator - (void)
 	z = -z;
 	return *this;
 }
-
 //VECTOR3 WITH VECTOR3 OPERATOR
 inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator + (const Vector3& v)
 {
@@ -198,7 +194,6 @@ inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator / (const Vector
 {
 	return Vector3(x / v.x, y / v.y, z / v.z);
 }
-
 //SELF WITH VECTOR3 OPERATOR
 inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator += (const Vector3& v)
 {
@@ -228,7 +223,6 @@ inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator /= (const Vecto
 	z /= v.z;
 	return *this;
 }
-
 //VECTOR2 WITH SCALER OPERATOR
 inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator + (const float& f)
 {
@@ -246,7 +240,6 @@ inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator / (const float&
 {
 	return Vector3(x / f, y / f, z / f);
 }
-
 //SELF WITH SCALER OPERATOR
 inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator += (const float& f)
 {
@@ -276,6 +269,14 @@ inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator /= (const float
 	z /= f;
 	return *this;
 }
+//-------------------------
+inline Maths::sVector::Vector3  Maths::sVector::Vector3::Normalize(const Vector3& v)
+{
+	Vector3 temp(v);
+	float valueOfMagnitude = temp.GetMagnitude();
+	return Vector3(temp.x / valueOfMagnitude, temp.y / valueOfMagnitude, v.z / valueOfMagnitude);
+}
+//-------------------------
 #pragma endregion Vector3
 /************************\
  *-------VECTOR_4-------*

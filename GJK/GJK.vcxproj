@@ -147,8 +147,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Headers\Physics\GJK.hpp" />
     <ClCompile Include="Sources\Core\App.cpp" />
     <ClCompile Include="Sources\main.cpp" />
+    <ClCompile Include="Sources\Physics\GJK.cpp" />
     <ClCompile Include="Sources\Resources\Shapes.cpp" />
   </ItemGroup>
   <ItemGroup>
