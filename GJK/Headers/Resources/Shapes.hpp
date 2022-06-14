@@ -17,6 +17,8 @@ namespace Resources
 
 		Maths::sVector::Vector2 GetPosition();
 
+		Maths::sVector::Vector3 GetfurthestPoint(Maths::sVector::Vector3& direction);
+
 		void ChangePosition(float x, float y);
 		void ChangePosition(Maths::sVector::Vector2 newPos);
 		void DrawInformation(int offsetX, int offsetY);

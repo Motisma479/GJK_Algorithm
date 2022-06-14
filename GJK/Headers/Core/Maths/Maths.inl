@@ -172,10 +172,7 @@ inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator = (const float&
 //NEGATE OPERATOR
 inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator - (void)
 {
-	x = -x;
-	y = -y;
-	z = -z;
-	return *this;
+	return Vector3(-x, -y, -z);
 }
 //VECTOR3 WITH VECTOR3 OPERATOR
 inline Maths::sVector::Vector3 Maths::sVector::Vector3::operator + (const Vector3& v)
@@ -275,6 +272,10 @@ inline Maths::sVector::Vector3  Maths::sVector::Vector3::Normalize(const Vector3
 	Vector3 temp(v);
 	float valueOfMagnitude = temp.GetMagnitude();
 	return Vector3(temp.x / valueOfMagnitude, temp.y / valueOfMagnitude, v.z / valueOfMagnitude);
+}
+inline float Maths::sVector::Vector3::DotProduct(const Vector3& a, const Vector3& b)
+{
+	return a.x * b.x + a.y * b.y + a.z * b.z;
 }
 //-------------------------
 #pragma endregion Vector3

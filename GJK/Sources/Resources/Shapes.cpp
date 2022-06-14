@@ -22,6 +22,22 @@ Maths::sVector::Vector2 Resources::Shapes::GetPosition()
 {
 	return _position;
 }
+Maths::sVector::Vector3 Resources::Shapes::GetfurthestPoint(Maths::sVector::Vector3& direction)
+{
+	float temp = Maths::sVector::Vector3::DotProduct(Maths::sVector::Vector3::Normalize(points[0] - _position), direction);
+	int indexOfPoint = 0;
+
+	for (int i = 1; i < points.size(); i++)
+	{
+		float dp = Maths::sVector::Vector3::DotProduct(Maths::sVector::Vector3::Normalize(points[i] - _position), direction);
+		if ( dp > temp)
+		{
+			temp = dp;
+			indexOfPoint = i;
+		}
+	}
+	return points[indexOfPoint];
+}
 void Resources::Shapes::ChangePosition(float x, float y)
 {
 	_position = { x, y };

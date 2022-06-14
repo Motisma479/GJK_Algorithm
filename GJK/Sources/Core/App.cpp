@@ -1,6 +1,6 @@
 #include "Core/App.hpp"
 #include "Resources/Shapes.hpp"
-
+#include "Physics/GJK.hpp"
 App::App(): _width(800), _heigth(450)
 {
 	InitWindow(_width, _heigth, "GJK_Collider");
@@ -47,6 +47,7 @@ void App::update()
 		shapeI.Draw();
 		shapeII.Draw();
 		
+		Physics::TestCollision(shapeII, shapeI);
 		//DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 
 	EndDrawing();
