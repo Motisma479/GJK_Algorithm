@@ -1,14 +1,21 @@
 #pragma once
-#include "raylib.hpp"
 
 class App
 {
 private:
-	int _width, _heigth;
+	int width_, heigth_;
+	bool isInit_;
 public:
 	App();
 	App(const char* name, int width, int height);
 	~App();
 
-	void update();
+	void Update();
+
+protected:
+	void Init(const char* name, int width, int height);
+	void Destroy();
+
+	void StartFrame();
+	void EndFrame();
 };
