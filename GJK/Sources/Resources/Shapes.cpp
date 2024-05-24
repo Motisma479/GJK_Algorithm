@@ -3,46 +3,48 @@
 #include "raylib.hpp"
 #include <string>
 
-Resources::Shapes::Shapes(): _position(0, 0), collision(false)
+Resources::Shapes::Shapes(): _position(0, 0, 0), collision(false)
 {
 
 }
-Resources::Shapes::Shapes(float x, float y): _position(x, y), collision(false)
+Resources::Shapes::Shapes(float x, float y, float z) : _position(x, y, z), collision(false)
 {
 
 }
-Resources::Shapes::Shapes(float x, float y, Maths::sVector::Vector3* pointsList, int numberOfPoints) : _position(x, y), collision(false)
+Resources::Shapes::Shapes(float x, float y, float z, Maths::Vec3* pointsList, int numberOfPoints) : _position(x, y, z), collision(false)
 {
 	for (int i = 0; i < numberOfPoints; i++)
 	{
 		points.emplace_back(pointsList[i]);
 	}
 }
-Maths::sVector::Vector2 Resources::Shapes::GetPosition()
+Maths::Vec3 Resources::Shapes::GetPosition()
 {
 	return _position;
 }
-Maths::sVector::Vector3 Resources::Shapes::GetfurthestPoint(Maths::sVector::Vector3& direction)
+Maths::Vec3 Resources::Shapes::GetfurthestPoint(const Maths::Vec3& direction)
 {
-	float temp = Maths::sVector::Vector3::DotProduct(Maths::sVector::Vector3::Normalize(points[0] - _position), direction);
-	int indexOfPoint = 0;
+	//float temp = Maths::sVector::Vector3::DotProduct(Maths::sVector::Vector3::Normalize(points[0] - _position), direction);
+	//int indexOfPoint = 0;
+	Maths::Vec3 maxPoint;
+	float maxDistance = -FLT_MAX;
 
-	for (int i = 1; i < points.size(); i++)
+	for (Maths::Vec3& point : points)
 	{
-		float dp = Maths::sVector::Vector3::DotProduct(Maths::sVector::Vector3::Normalize(points[i] - _position), direction);
-		if ( dp > temp)
+		float distance = Maths::Vectors::DotProduct(point, direction);
+		if (distance > maxDistance)
 		{
-			temp = dp;
-			indexOfPoint = i;
+			maxDistance = distance;
+			maxPoint = point;
 		}
 	}
-	return points[indexOfPoint];
+	return maxPoint;
 }
-void Resources::Shapes::ChangePosition(float x, float y)
+void Resources::Shapes::ChangePosition(float x, float y, float z)
 {
-	_position = { x, y };
+	_position = Maths::Vec3( x, y, z );
 }
-void Resources::Shapes::ChangePosition(Maths::sVector::Vector2 newPos)
+void Resources::Shapes::ChangePosition(Maths::Vec3 newPos)
 {
 	_position = newPos;
 }

@@ -1,9 +1,9 @@
 #include "Core/App.hpp"
+#include "Physics/GJK.hpp"
 
 #include <iostream>
 #include <raylib.hpp>
 
-#include "Physics/GJK.hpp"
 
 // ---- CONSTRUCTOR ----------------------------------------
 
@@ -27,23 +27,44 @@ App::~App()
 // ---------------------------------------------------------
 
 
-Maths::sVector::Vector3 SQUARE[4] =
+Maths::Vec3 SQUARE[4] =
 {
-	Maths::sVector::Vector3(-0.5, -0.5, 0) * 100,
-	Maths::sVector::Vector3(-0.5,  0.5, 0) * 100,
-	Maths::sVector::Vector3(0.5,  0.5, 0) * 100,
-	Maths::sVector::Vector3(0.5, -0.5, 0) * 100
+	Maths::Vec3(-0.5, -0.5, 0) * 100,
+	Maths::Vec3(-0.5,  0.5, 0) * 100,
+	Maths::Vec3(0.5,  0.5, 0) * 100,
+	Maths::Vec3(0.5, -0.5, 0) * 100
 };
 
-Resources::Shapes shapeI(0, 0, SQUARE, 4);
-Resources::Shapes shapeII(0, 0, SQUARE,4);
+Maths::Vec3 T1[4] =
+{
+	Maths::Vec3(0, 0, 0) * 25,
+	Maths::Vec3(3, 1, 0) * 25,
+	Maths::Vec3(2, 2, 0) * 25,
+	Maths::Vec3(0, 2, 0) * 25
+
+};
+
+Maths::Vec3 T2[5] =
+{
+	Maths::Vec3(0, 0, 0) * 25,
+	Maths::Vec3(2, 2, 0) * 25,
+	Maths::Vec3(1, 3, 0) * 25,
+	Maths::Vec3(-1, 2, 0) * 25,
+	Maths::Vec3(-1, 1, 0) * 25
+};
+
+//Resources::Shapes shapeI(0, 0, 0, SQUARE, 4);
+//Resources::Shapes shapeII(0, 0, 0, SQUARE,4);
+
+Resources::Shapes shapeI(0, 0, 0, T1, 4);
+Resources::Shapes shapeII(0, 0, 0, T2, 5);
 
 void App::Update()
 {
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
-		shapeI.ChangePosition(width_ / 2 + 100, heigth_ / 2 - 100);
-		shapeII.ChangePosition(GetMousePosition().x, GetMousePosition().y);
+		shapeI.ChangePosition(width_ / 2 + 100, heigth_ / 2 - 100,0);
+		shapeII.ChangePosition(GetMousePosition().x, GetMousePosition().y, 0);
 
 		StartFrame();
 
@@ -57,7 +78,7 @@ void App::Update()
 		shapeI.Draw();
 		shapeII.Draw();
 
-		Physics::TestCollision(shapeII, shapeI);
+		Physics::TestCollision(shapeI, shapeII);
 		//DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 
 		EndFrame();
