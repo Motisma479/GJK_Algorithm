@@ -78,7 +78,7 @@ void App::Update()
 		shapeI.Draw();
 		shapeII.Draw();
 
-		Physics::TestCollision(shapeI, shapeII);
+		shapeI.collision = shapeII.collision = Physics::TestCollision(shapeI, shapeII);
 		//DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 
 		EndFrame();

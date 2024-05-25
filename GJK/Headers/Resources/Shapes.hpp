@@ -9,8 +9,8 @@ namespace Resources
 	{
 	private:
 		Maths::Vec3 _position;
-		bool collision;
 	public:
+		bool collision;
 		Shapes();
 		Shapes(float x, float y, float z);
 		Shapes(float x, float y, float z, Maths::Vec3* pointsList, int numberOfPoints);
