@@ -2,7 +2,7 @@
 ## ⭐ About the Project
 This is my implementation of the GJK algorithm write in [![C++](https://img.shields.io/badge/C%2B%2B-v17-blue)](https://isocpp.org/) and compilled with visual studio.
 
-I use ![Static Badge](https://img.shields.io/badge/raylib-f5f5f5?logo=Raylib&logoColor=black) to render the shapes.
+I use [![Static Badge](https://img.shields.io/badge/raylib-f5f5f5?logo=Raylib&logoColor=black)](https://github.com/raysan5/raylib) to render the shapes.
 
 ## ❗ Information
 
